@@ -1,0 +1,68 @@
+`timescale 1ns / 1ps
+//////////////////////////////////////////////////////////////////////////////////
+// Company: 
+// Engineer: 
+// 
+// Create Date: 29.09.2025 17:21:45
+// Design Name: 
+// Module Name: XADC_TEST_tb
+// Project Name: 
+// Target Devices: 
+// Tool Versions: 
+// Description: 
+// 
+// Dependencies: 
+// 
+// Revision:
+// Revision 0.01 - File Created
+// Additional Comments:
+// 
+//////////////////////////////////////////////////////////////////////////////////
+
+module XADC_TEST_tb;
+
+   wire [15:0]do_out;          
+   reg dclk_in;    
+   reg reset_in;        
+   wire drdy_out;
+   wire eoc_out, alarm_out, eos_out, busy_out;
+   wire [4:0]channel_out;
+
+   // analog aux inputs as regs for simulation
+   reg vauxp7, vauxn7;
+
+   // Clock generation
+   initial begin
+      dclk_in = 1'b0;
+      forever #5 dclk_in = ~dclk_in;
+   end
+
+   initial begin
+      reset_in = 1'b1;
+      #200 reset_in = 1'b0;
+   end
+
+   // Instantiate DUT
+   XADC_TEST DUT (
+      .di_in(16'b0),              
+      .daddr_in({{2{1'b0}},channel_out}), 
+      .den_in(eoc_out),           
+      .dwe_in(1'b0),            
+      .drdy_out(drdy_out),        
+      .do_out(do_out),            
+      .dclk_in(dclk_in),          
+      .reset_in(reset_in),       
+      .vp_in(1'b0),              
+      .vn_in(1'b0),              
+      .vauxp7(vauxp7),   //  connect aux input
+      .vauxn7(vauxn7),   //  connect aux input
+      .channel_out(channel_out), 
+      .eoc_out(eoc_out),         
+      .alarm_out(alarm_out),     
+      .eos_out(eos_out),         
+      .busy_out(busy_out)   
+   );
+
+
+
+endmodule

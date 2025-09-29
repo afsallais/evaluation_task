@@ -1,0 +1,1 @@
+This folder is the project directory for STM32 code. it can be opened with open project option of CubeIDE

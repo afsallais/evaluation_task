@@ -1,0 +1,1 @@
+can be opened with Arduino IDE and flashed to nodemcu 1.0

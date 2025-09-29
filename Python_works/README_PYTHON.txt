@@ -1,0 +1,1 @@
+please open in PyCharm and change com port for nodemcu and stm32 respectively by finding them from device manager--> ports

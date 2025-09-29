@@ -61,7 +61,9 @@ def verify_checksum(data, checksum):
 # -----------------------------
 def extract_packet(buffer):
     """Finds complete packet in buffer. Returns packet and remaining buffer."""
+    print(buffer)
     start_index = buffer.find(b'\xAA')  # Look for start byte 0xAA
+    # todo take time store globally, take difference
     if start_index == -1:  # Start byte not found
         return None, buffer
     if len(buffer) < start_index + 3:  # Minimum packet size: start + length + checksum

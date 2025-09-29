@@ -24,7 +24,7 @@ legend_text = ax.text(0.7, 1.05, '', transform=ax.transAxes)  # Text for display
 ax.set_ylim(0, 255)  # Set initial Y-axis limits (assuming 8-bit ADC data)
 ax.set_xlabel("Samples")  # Label X-axis
 ax.set_ylabel("Amplitude")  # Label Y-axis
-ax.set_title("Real-time Data from STM32")  # Plot title
+ax.set_title("Real-time Data from NodeMCU")  # Plot title
 ax.grid(True)  # Enable grid
 
 # -----------------------------
